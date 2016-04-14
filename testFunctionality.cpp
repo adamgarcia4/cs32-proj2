@@ -29,4 +29,7 @@ void insertTest()
 	b = a;
 	cerr << "B is: " << endl;
 	b.dump();
+	ItemType elem;
+	a.get(4, elem);
+	cerr << "get element 0: " << elem << endl;
 }

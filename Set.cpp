@@ -149,6 +149,7 @@ bool Set::erase(const ItemType & value)
 		delete m_head; //delete this node.
 		headPtr->m_prev = nullptr;
 		m_head = headPtr;
+		m_listSize--;
 		return true;
 	}
 	else if ((tailPtr->m_data) == value) //if at end of list.
@@ -157,6 +158,7 @@ bool Set::erase(const ItemType & value)
 		delete m_tail;
 		tailPtr->m_next = nullptr;
 		m_tail = tailPtr;
+		m_listSize--;
 		return true;
 	}
 	else
@@ -168,6 +170,7 @@ bool Set::erase(const ItemType & value)
 				temp->m_prev->m_next = temp->m_next;
 				temp->m_next->m_prev = temp->m_prev;
 				delete temp;
+				m_listSize--;
 				return true;
 			}
 		}
@@ -240,12 +243,26 @@ bool Set::contains(const ItemType & value) const
 	*/
 }
 
-
-
+//Get Function
+/*
+If 0 <= i < size(), copy into value an item in the set and
+return true.  Otherwise, leave value unchanged and return false.
+(See below for details about this function.)
+*/
 bool Set::get(int pos, ItemType & value) const
 {
-	return false;
+	if (pos < 0 || pos >= m_listSize) //is it <=?
+		return false;
+
+	//position is within the bounds.
+	node* tempHead = m_head;
+	for (int i = 0; tempHead != nullptr && i!=pos; tempHead = tempHead->m_next,i++) //tempHead traverses list, iterating i until tempHead reaches correct node.
+	{}
+
+	value = tempHead->m_data;
+	return true;
 }
+
 
 void Set::swap(Set & other)
 {

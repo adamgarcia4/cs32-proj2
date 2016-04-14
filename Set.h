@@ -60,6 +60,11 @@ public:
 	bool contains(const ItemType& value) const;
 
 	//Get Function
+	/*
+	If 0 <= i < size(), copy into value an item in the set and
+    return true.  Otherwise, leave value unchanged and return false.
+    (See below for details about this function.)
+	*/
 	bool get(int pos, ItemType& value) const;
 
 	//Swap Function
