@@ -26,7 +26,7 @@ public:
 	Set(const Set &obj);
 
 	//Assignment Operator
-	Set operator=(Set obj);
+	Set& operator=(Set obj);
 
 	//Empty Function
 	/*Return true if the set is empty, otherwise false.
@@ -37,12 +37,26 @@ public:
 	int size() const;
 
 	//Insert Function
+	/*
+	 Insert value into the set if it is not already present.  Return
+	 true if the value was actually inserted.  Leave the set unchanged
+	 and return false if the value was not inserted (perhaps because it
+	 is already in the set).
+	*/
 	bool insert(const ItemType& value);
 
 	//Erase Function
+	/*
+	Remove the value from the set if present.  Return true if the
+    value was removed; otherwise, leave the set unchanged and
+    return false.
+	*/
 	bool erase(const ItemType& value);
 
 	//Contains Function
+	/*
+	Return true if the value is in the set, otherwise false.
+	*/
 	bool contains(const ItemType& value) const;
 
 	//Get Function
@@ -64,9 +78,9 @@ public:
 		node* m_prev;
 	};
 private:
-	node* m_head;
-	node* m_tail;
-	int m_listSize;
+	node* m_head=nullptr;
+	node* m_tail=nullptr;
+	int m_listSize=0;
 };
 
 #endif
