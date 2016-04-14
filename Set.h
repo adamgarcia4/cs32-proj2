@@ -2,9 +2,10 @@
 #define SET_H
 
 #include <string>
+#include <iostream>
 using namespace std;
 
-typedef string ItemType;
+typedef unsigned long ItemType;
 
 class Set
 {
@@ -28,6 +29,8 @@ public:
 	Set operator=(Set obj);
 
 	//Empty Function
+	/*Return true if the set is empty, otherwise false.
+	*/
 	bool empty() const;
 
 	//Size Function
@@ -48,8 +51,14 @@ public:
 	//Swap Function
 	void swap(Set& other);
 
+	void dump() const;
+
 	struct node
 	{
+	public:
+		node();
+		node(ItemType data);
+
 		ItemType m_data;
 		node* m_next;
 		node* m_prev;
@@ -57,6 +66,7 @@ public:
 private:
 	node* m_head;
 	node* m_tail;
+	int m_listSize;
 };
 
 #endif
